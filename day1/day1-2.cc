@@ -47,10 +47,11 @@ int main() {
 
   std::sort(std::begin(elves), std::end(elves), largerThan);
 
-  auto topThree = elves[0]->totalCalories() + elves[1]->totalCalories() +
-                  elves[2]->totalCalories();
+  auto topThree = std::accumulate(
+      std::begin(elves), std::begin(elves) + 3, 0,
+      [](int i, std::shared_ptr<Elf> e) { return i + e->totalCalories(); });
 
-  std::cout << "Max total calories: " << topThree << std::endl;
+  std::cout << topThree << std::endl;
 
   return 0;
 }

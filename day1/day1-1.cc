@@ -41,12 +41,9 @@ int main() {
 
   inputFile.close();
 
-  std::sort(std::begin(elves), std::end(elves), smallerThan);
+  auto max = std::max_element(std::begin(elves), std::end(elves), smallerThan);
 
-  auto topThree = elves[0]->totalCalories() + elves[1]->totalCalories() +
-                  elves[2]->totalCalories();
-
-  std::cout << "Max total calories: " << topThree << std::endl;
+  std::cout << max->get()->totalCalories() << std::endl;
 
   return 0;
 }
