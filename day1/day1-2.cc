@@ -16,8 +16,12 @@ struct Elf {
   }
 };
 
-bool comparator(std::shared_ptr<Elf> a, std::shared_ptr<Elf> b) {
+bool largerThan(std::shared_ptr<Elf> a, std::shared_ptr<Elf> b) {
   return a->totalCalories() > b->totalCalories();
+}
+
+bool smallerThan(std::shared_ptr<Elf> a, std::shared_ptr<Elf> b) {
+  return a->totalCalories() < b->totalCalories();
 }
 
 int main() {
@@ -41,7 +45,7 @@ int main() {
 
   inputFile.close();
 
-  std::sort(std::begin(elves), std::end(elves), comparator);
+  std::sort(std::begin(elves), std::end(elves), largerThan);
 
   auto topThree = elves[0]->totalCalories() + elves[1]->totalCalories() +
                   elves[2]->totalCalories();
