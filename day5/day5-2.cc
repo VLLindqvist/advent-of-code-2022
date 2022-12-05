@@ -54,7 +54,8 @@ std::string readAndExecuteInstructions(std::ifstream &file,
       break;
     }
 
-    std::regex numberRegex("\\d\\d?\\d?\\d?");
+    // create regex that matches a number
+    std::regex numberRegex("[0-9]+");
 
     auto numbersInRowBegin =
         std::sregex_iterator(std::begin(line), std::end(line), numberRegex);
